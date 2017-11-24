@@ -20,11 +20,9 @@ let gameSession = {
         lostScore: 0,
         timerID: "",
     },
-    initGame: function(arr,fn){
+    initGame: function(fn){
         this.data.playedWord = [];
-        this.data.randomWord = gameSession.getRandomItem(arr,this.getCleanString);
-        this.initPlayedWord();
-        //this.data = JSON.parse(localStorage.getItem("dataStorage")); //El localStorage es externo
+        this.getRandomWord();
         this.timer(fn);
     },
     getRandomItem: function(arr,fn){
@@ -74,8 +72,11 @@ let gameSession = {
             if(typeof data.Title === "undefined" || data.Title.indexOf("pisode")>0){
                 this.getRandomWord();
             }
-            else this.initGame([data.Title],refreshPlayedWord);;
-            
+            else{
+                this.data.randomWord =this.getCleanString(data.Title);
+                this.initPlayedWord();
+                //this.data = JSON.parse(localStorage.getItem("dataStorage")); //El localStorage es externo
+            } 
         });
     },
     checkLetter: function(letter){
@@ -147,7 +148,7 @@ let gameSession = {
             this.setWin();
         }
     },
-    restartGame: function(arr,fn){
+    restartGame: function(fn){
         $("#container--letters-box").css("pointer-events","auto"); //Acción Externa
         $("#hint").css("pointer-events","auto");//Acción Externa
         clearClickedClassLetterBox(); //Accion Externa
@@ -158,7 +159,7 @@ let gameSession = {
 
         this.data.lifes = this.dataDefault.lifes;
         this.data.timeCount = this.dataDefault.timeCount;
-        this.initGame(arr,fn); 
+        this.initGame(fn); 
     },
     showSolutionInPlayedWord: function(){
         let playedWord = this.data.playedWord;
@@ -247,9 +248,7 @@ function addEventClickPlayAgain(){
     let btnPlayAgain = $("#playAgain");
 
     btnPlayAgain.on("click",()=>{
-            gameSession.restartGame(peliculas,()=>{ 
-            refreshPlayedWord();
-        });
+            gameSession.restartGame(refreshPlayedWord);
     });
 }
 
@@ -281,7 +280,7 @@ function addEventKeypressTextBoxResolveUserName(){
             $("#coverPage").css("display","none");
             gameSession.setUserName(inputText);
             $("h1").css("color","black");
-            gameSession.getRandomWord();
+            gameSession.initGame(refreshPlayedWord);
             animatePlayIn();
         } 
     });
@@ -295,7 +294,7 @@ function addEventClickStart(){
         $("#coverPage").css("display","none");
         $("h1").css("color","black");
         gameSession.setUserName(inputText);
-        gameSession.getRandomWord();
+        gameSession.initGame(refreshPlayedWord);
         animatePlayIn();
     });
 }
