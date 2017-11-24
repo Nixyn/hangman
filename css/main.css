@@ -6,12 +6,12 @@ body{
 
 @font-face {
     font-family: "Bombing";
-    src: "../fonts/Bombing.ttf";
+    src: "../fonts/Bombing.ttf" format("truetype");
 }
 
 @font-face {
     font-family: "Nunito";
-    src: "../fonts/Nunito-Regular.ttf";
+    src: "../fonts/Nunito-Regular.ttf" format("truetype");
 }
 
 /*COVER PAGE*/
