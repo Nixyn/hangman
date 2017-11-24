@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <script src="js/main.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <section id="coverPage">
+        <h2>User name:</h2>
+        <input id="textBox-userName" class="textBox" type="text">
+        <div id="startPlay" class="btn">START</div>
+    </section>
+    <div class="wrapper">
+        <header>
+            <h1>HANGMAN</h1>
+        </header>
+        
+        <div id="userName"> <span></span> <img src="img/user.png" alt="icon-user"></div>
+        <aside id="container--status-game">
+            <div class="score-box score-box--lifes">
+                <span id ="lifes">10</span> 
+                <img src="img/heart.png" alt="icon-heart"> 
+            </div>
+            <div class="score-box score-box--win">
+                <span id ="wonScore">0</span> 
+                <img src="img/win.png" alt="icon-heart"> 
+            </div>
+            <div class="score-box score-box--lose">
+                <span id ="lostScore">0</span> 
+                <img src="img/lose.png" alt="icon-heart"> 
+            </div>
+            <div class="score-box score-box--time">
+                <span id ="timeCount">60</span> 
+                <img src="img/clock.png" alt="icon-heart"> 
+            </div>
+        </aside>
+        <div id="container--letters-box"></div>
+        <div id="playedWord"></div>
+        <div id="container--last-buttons">
+            <input id="textBox-resolve" class="textBox" type="text">
+            <div id="resolve" class="btn">RESOLVE</div>
+            <div id="hint" class="btn">HINT</div>
+            <div id="playAgain" class="btn">PLAY AGAIN</div>
+        </div>
+        
+    </div>
+    
+</body>
+</html>
