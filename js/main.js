@@ -64,7 +64,7 @@ let gameSession = {
         let max = 9999;
         let min = 1000;
         let randomNum = parseInt(Math.random()*(max-min)+min);
-        let requestStr = "http://www.omdbapi.com/?i=tt078"+randomNum+"&apikey=65c34c49";
+        let requestStr = "https://www.omdbapi.com/?i=tt078"+randomNum+"&apikey=65c34c49";
         
         $.ajax ({
             type: "GET",
